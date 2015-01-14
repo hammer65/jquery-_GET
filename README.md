@@ -1,1 +1,2 @@
 # jquery-_GET
+This jQuery plugin will add a _GET() function to jQuery which will return an object with the query string values of the current page and all script and link tags linked to javascript files and external stylesheets. If a script tag or link tag has an "id" attribute the values will be available in a property which matches the id. If an id is not present, the file name (without the extension) will be used as the property name.
