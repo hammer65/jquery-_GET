@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="text/javascript">
+      if(window.location.search == ''){
+        window.location = '/test/index.html?type=takeout&dishes[meat]=chicken&dishes[meat]=beef&dishes[meat]=fish';
+      }
+    </script>
+    
+    <style type="text/css">
+      .three{
+        color:#0000FF;
+        font-weight:700;
+      }
+      
+      #testdisplay1, #testdisplay2{
+        margin:8px 0px 8px 0px;
+      }
+      
+      #headline{
+        margin:8px 0px 8px 0px;
+      }
+    </style>
+    
     <script type="text/javascript" src="jquery-2.1.3.js"></script>
     <script type="text/javascript" src="../jquery-_GET-1.0.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        _GET = $._GET();
+        $('#testdisplay1').html(_GET['test2']['test'][0]);
+      });
+    </script>
+    
+    <script id="test1" type="text/javascript" src="test1.js?test=one"></script>
+    <script id="test2" type="text/javascript" src="test2.js?test[]=one&test[]=two"></script>
+    <script id="test3" type="text/javascript" src="test3.js?test[size]=15&test[name]=three"></script>
+    <script id="test4" type="text/javascript" src="test4.js?test=4&test=four"></script>
+    
   </head>
   <body>
-    <input type="button" value="test" onclick="console.log(jQuery._GET())" />
+    <input type="button" value="test" onclick="alert(JSON.stringify(_GET));" />
+    
+    <div id="testdisplay1"></div>
+    <div id="testdisplay2"></div>
+    <input type="button" value="Show My Choices" onclick="showDrop()" />
+    <br />
+    <div id="headline">Headline</div>
+    <br />
   </body>
 </html>
