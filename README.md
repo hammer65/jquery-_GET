@@ -25,6 +25,12 @@ This jQuery plugin will add a _GET() function to jQuery which will return an obj
  
  Some inspiration for this code came from the [jquery-querystring](https://github.com/kylefox/jquery-querystring) plugin.
  
- A function from the [PHP.js](http://phpjs.org) project was also used
+ A function from the [PHP.js](http://phpjs.org) project was also used.
+ 
+ When trying to transfer values from server side code to client side javascript code one usually needs to either
+ dynamically generate the javascript within a template/view file, or use AJAX. Using jQuery-_GET eliminates the need for 
+ messy server side code which generates some of your javascript or network intensive data retrieval via AJAX. jQuery-_GET
+ pulls from the page URL or individual script tag URLs all of which can contain different data. As always care should be
+ tabke as to what values are put in URLs but this is also true of dynamically produced Javascript and AJAX.
  
  Any bug fixes or ideas for improvement are welcome.
