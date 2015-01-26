@@ -3,6 +3,7 @@
   <head>
     <script type="text/javascript">
       if(window.location.search == ''){
+        // Test mixing multiple types of query string values
         window.location = '/test/index.html?type=takeout&dishes[meat]=chicken&dishes[meat]=beef&dishes[meat]=fish';
       }
     </script>
@@ -31,11 +32,17 @@
       });
     </script>
     
+    <!-- Test plain single key and value -->
     <script id="test1" type="text/javascript" src="test1.js?test=one"></script>
+    <!-- Test of empty square bracket syntax -->
     <script id="test2" type="text/javascript" src="test2.js?test[]=one&test[]=two"></script>
+    <!-- Test of square bracket syntax with string keys -->
     <script id="test3" type="text/javascript" src="test3.js?test[size]=15&test[name]=three"></script>
-    <script id="test4" type="text/javascript" src="test4.js?test=4&test=four"></script>
-    
+    <!-- Test using filename as key -->
+    <script type="text/javascript" src="test4.js?test=4&test=four"></script>
+    <!-- Test using integer keys -->
+    <script id="test5" type="text/javascript" src="test4.js?p[0]=first&p[1]=second"></script>
+   
   </head>
   <body>
     <input type="button" value="test" onclick="alert(JSON.stringify(_GET));" />

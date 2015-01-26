@@ -9,6 +9,14 @@
     }
   };
   
+  function stripQuery(string){
+	  var ret = string;
+	  if(string.indexOf('?') >= 0){
+		  ret = string.split('?')[0];
+	  }
+	  return ret;
+  }
+  
   function basename(path, suffix) {
     //  discuss at: http://phpjs.org/functions/basename/
     // original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
@@ -35,9 +43,8 @@
     b = b.replace(/^.*[\/\\]/g, '');
   
     if (typeof suffix === 'string' && b.substr(b.length - suffix.length) == suffix) {
-      b = b.substr(0, b.length - suffix.length);
+      b = b.substr(0, b.length - (suffix.length + 1));
     }
-  
     return b;
   }
     
@@ -51,13 +58,13 @@
   }
   
   function parse(str){
-    var params = {}, query = extractQuery(str);
+    var params = new Object
     
-    if(!query){
-      return params;
+    if(!str){
+      return null;
     }
     
-    $.each(query.split('&'),function(idx,pair){
+    $.each(str.split('&'),function(idx,pair){
       process(pair);
     });
     
@@ -67,6 +74,8 @@
       var reg = /(\w+?)\[(\w*?)\]/;
       var parts = pair.split('=');
       value = parseValue(parts[1] || '');
+      // make sure the key isn't encoded
+      parts[0] = decodeURIComponent(parts[0]);
       // if the key string matches either key[] or key[subkey]
       if(reg.test(parts[0])){
         var kparts = parts[0].match(reg);
@@ -133,27 +142,28 @@
           params[k] = value;
         }
       }
-    };
+      return params;
+    }
     return params;
   }
   
   $._GET = function(){
-    var params = {};
+    var p = new Object;
     var str = extractQuery(window.location.search);
     if(str != ''){
-      params['page'] = parse(str);
+      p['page'] = parse(str);
     }
     
     // script tags
     var label = '';
     $('script').each(function(){
-      label = this.id ? this.id : basename(this.src);
+      label = this.id ? this.id : basename(stripQuery(this.src),'js').split('?')[0];
       search = $('<a></a>').attr('href',this.src)[0].search
-      if(search != ''){
-        params[label] = parse(search);
+      if(search != '' && label != ''){
+        p[label] = parse(extractQuery(search));
       }
     });
-    return params;
+    return p;
   };
   
 })(jQuery);
