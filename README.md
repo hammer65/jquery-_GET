@@ -6,22 +6,22 @@ This jQuery plugin will add a _GET() function to jQuery which will return an obj
  
  All types of key/value pairs used in URLs are supported
  
- ...
+ ```
  name=value
- ...
+ ```
  
- ...
+ ```
  name[]=value
- ...
- ...
+ ```
+ ```
  name[key]=value
- ...
+ ```
  
  Include jQuery-_GET after the inclusion of the jQuery library.
- ...
+ ```
  <script type="text/javascript" src="js/jquery.js"></script>
  <script type="text/javascript" src="js/jquery-_GET-min-1.0.js"></script>
- ...
+ ```
  
  Some inspiration for this code came from the [jquery-querystring]{https://github.com/kylefox/jquery-querystring} plugin.
  
