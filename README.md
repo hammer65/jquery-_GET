@@ -23,8 +23,8 @@ This jQuery plugin will add a _GET() function to jQuery which will return an obj
  <script type="text/javascript" src="js/jquery-_GET-min-1.0.js"></script>
  ```
  
- Some inspiration for this code came from the [jquery-querystring]{https://github.com/kylefox/jquery-querystring} plugin.
+ Some inspiration for this code came from the [jquery-querystring](https://github.com/kylefox/jquery-querystring) plugin.
  
- A function from the [PHP.js]{http://phpjs.org} project was also used
+ A function from the [PHP.js](http://phpjs.org) project was also used
  
  Any bug fixes or ideas for improvement are welcome.
