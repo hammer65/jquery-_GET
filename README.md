@@ -22,6 +22,14 @@ This jQuery plugin will add a _GET() function to jQuery which will return an obj
  <script type="text/javascript" src="js/jquery.js"></script>
  <script type="text/javascript" src="js/jquery-_GET-min-1.0.js"></script>
  ```
+ Possible use case
+ ```
+ <script type="text/javascript">
+   $(document).ready(function(){
+     _GET = $._GET();
+   });
+ </script>
+ ```
  
  Some inspiration for this code came from the [jquery-querystring](https://github.com/kylefox/jquery-querystring) plugin.
  
@@ -31,6 +39,6 @@ This jQuery plugin will add a _GET() function to jQuery which will return an obj
  dynamically generate the javascript within a template/view file, or use AJAX. Using jQuery-_GET eliminates the need for 
  messy server side code which generates some of your javascript or network intensive data retrieval via AJAX. jQuery-_GET
  pulls from the page URL or individual script tag URLs all of which can contain different data. As always care should be
- tabke as to what values are put in URLs but this is also true of dynamically produced Javascript and AJAX.
+ taken as to what values are put in URLs but this is also true of dynamically produced Javascript and AJAX.
  
  Any bug fixes or ideas for improvement are welcome.
