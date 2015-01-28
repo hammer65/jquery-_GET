@@ -1,6 +1,23 @@
 # jquery-_GET
 This jQuery plugin will add a _GET() function to jQuery which will return an object with the query string values of the current page and all script linked to javascript files.
- If a script tag has an "id" attribute the values will be available in a property which matches the id. If an id is not present, the file name (without the extension) will be used as the property name. 
+ 
+#Data Structure
+ A Javascript object is returned with keys representing data for the page and for each script tag with query string values
+ 
+ The key for the page will always be "page"
+ 
+ If a script tag has an "id" attribute the values will be available in a property which matches the id. So a script tag with an id attribute of "ui_control"
+ ```
+ <script type="text/javascript" id="ui_control" src="js/ui_control.js?account_id=5&user_id=16" />
+ ```
+ will give you
+ ```
+ {ui_control:{account_id:1,user_id:16}}
+ ```
+ If an id is not present, the file name (without the extension) will be used as the property name. An example output might look something like this
+ ```
+ {page:{id=2},ui_control{account_id:1,user_id:16},tracking:{api_key:k2s66idifl6d5s5sd6f5s}}
+ ```
 #Testing and Documentation 
  The test directory contains an index.html file with tests for every type of query string name/value pair variety and examples of how to use these values in your code. 
  
