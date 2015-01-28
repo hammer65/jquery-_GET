@@ -16,7 +16,7 @@ This jQuery plugin will add a _GET() function to jQuery which will return an obj
  ```
  If an id is not present, the file name (without the extension) will be used as the property name. An example output might look something like this
  ```
- {page:{id=2},ui_control{account_id:1,user_id:16},tracking:{api_key:k2s66idifl6d5s5sd6f5s}}
+ {page:{id:2},ui_control{account_id:1,user_id:16},tracking:{api_key:k2s66idifl6d5s5sd6f5s}}
  ```
 #Testing and Documentation 
  The test directory contains an index.html file with tests for every type of query string name/value pair variety and examples of how to use these values in your code. 
