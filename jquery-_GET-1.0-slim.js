@@ -64,7 +64,7 @@
   }
   
   function parse(str){
-    var params = new Object
+    var params = new Object;
     
     if(!str){
       return null;
@@ -80,71 +80,42 @@
       var reg = /(\w+?)\[(\w*?)\]/;
       var parts = pair.split('=');
       value = parseValue(parts[1] || '');
-      // make sure the key isn't encoded
       parts[0] = decodeURIComponent(parts[0]);
-      // if the key string matches either key[] or key[subkey]
       if(reg.test(parts[0])){
         var kparts = parts[0].match(reg);
         k = kparts[1];
         subK = kparts[2];
-        // empty square brackets give you an empty string which means 
-        // numerical array not hash
         if(subK == ''){
           subK = $.type(params[k]) == 'array' ? params[k].length : 0;
         }
-        // do we have a number now?
         isArr = !isNaN(subK);
       }else{
-    	// straignt ahead string key no array or object
         k = parts[0];
       }
-      // if we have seen the key before
       if(params.hasOwnProperty(k)){
-        // is params[k] something other than an array? Like an object or scaler value
         if(!params[k].push){
-          // do we have a subkey that is either a string or a number
           if(subK != null || isArr	){
-            // if so does that subkey exist under this key yet?
             if(params[k][subK]){
-              // first value won't be an array but a single value
-              // we now have another value to add make it an array if it isn't one
               if(!params[k][subK].push){
                 oldValue = params[k][subK];
                 params[k][subK] = [oldValue];
               }
               params[k][subK].push(value);
             }else{
-              // if this subkey does not yet exist for this key 
-              // (object or array)
-              // create it and fill it with the value
               params[k][subK] = value;
             }
               
           }else{
-        	// we have no subkey of any kind but a repeating key
-        	// default behavior is to overwrite with last value
-        	//****** default *******
-        	params[k] = value;
-        	// Alternate behavior is to let it be an array
-        	// ****** alternate *****//
-        	/*
-            oldValue = params[k];
-            params[k] = [oldValue];
-            params[k].push(value);
-            */
+        	 params[k] = value;
           }
         }else{
-          // key was found and we definitely have an array
           params[k][subK] = value;
         }
       }else{
-    	//first time for this key
-        if(subK != null || isArr){
-          // we have a subkey either string or number
+    	  if(subK != null || isArr){
           params[k] = isArr ? []:{};
           params[k][subK] = value;
         }else{
-          //we have no subkey
           params[k] = value;
         }
       }
@@ -160,7 +131,6 @@
       p['page'] = parse(str);
     }
     
-    // script tags
     var label = '';
     $('script').each(function(){
       label = this.id ? this.id : basename(stripQuery(this.src),'js').split('?')[0];
