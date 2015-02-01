@@ -3,6 +3,7 @@
 "title": "jQuery-_GET",
 "description": "jQuery plugin for getting data from querty strings in the page URL and URLs to external javascript files on the page.",
 "keywords": [
+    "jquery-plugin",
     "querystring",
     "utility"
 ],
