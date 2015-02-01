@@ -1,0 +1,27 @@
+{
+    "name": "_GET",
+"title": "jQuery-_GET",
+"description": "jQuery plugin for getting data from querty strings in the page URL and URLs to external javascript files on the page.",
+"keywords": [
+    "querystring",
+    "utility"
+],
+"version": "1.0.0",
+"author": {
+    "name": "Chris C. Root",
+    "url": "https://github.com/hammer65/jquery-_GET"
+},
+"licenses": [
+    {
+        "type": "MIT",
+        "url": "https://github.com/hammer65/jquery-_GET/blob/master/LICENSE.txt"
+    }
+],
+"bugs": "https://github.com/hammer65/jquery-_GET/issues",
+"homepage": "https://github.com/hammer65/jquery-_GET",
+"docs": "https://github.com/hammer65/jquery-_GET/blob/master/README.md",
+"download": "http://code.jquery.com/#_GET",
+"dependencies": {
+    "jquery": ">=1.5"
+    }
+}
